@@ -22,7 +22,8 @@ body.lock{overflow:hidden}
 header{background:var(--cd);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:5;padding-top:env(safe-area-inset-top)}
 .w{max-width:1100px;margin:0 auto;padding:10px 14px;width:100%}
 .hd{display:flex;align-items:center;gap:10px}
-#logo,#logoIc{width:40px;height:40px;object-fit:contain;color:var(--pr)}
+#logo{height:46px;width:auto;max-width:72px;object-fit:contain;flex:none}
+#logoIc{width:40px;height:40px;color:var(--pr)}
 .hd b{flex:1;font-size:15px;line-height:1.25}
 .ib{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:8px;cursor:pointer}
 .sun{display:none}[data-theme=dark] .sun{display:inline}[data-theme=dark] .moon{display:none}
@@ -111,7 +112,7 @@ header,footer,#vList,.noprint,.ov,#toast{display:none!important}
 </svg>
 
 <header><div class="w hd">
-<img id="logo" src="logo-imigrasi.png" alt="Logo Imigrasi" width="40" height="40">
+<img id="logo" src="logo-imigrasi.png" alt="Logo Imigrasi" height="46">
 <svg id="logoIc" class="ic" hidden role="img" aria-label="Logo"><use href="#i-box"/></svg>
 <b>Kantor Imigrasi Kelas II TPI Kediri</b>
 <button type="button" class="ib" id="btnTema" aria-label="Ganti mode terang/gelap"><svg class="ic moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="ic sun" aria-hidden="true"><use href="#i-sun"/></svg></button>
