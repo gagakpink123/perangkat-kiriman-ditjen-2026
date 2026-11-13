@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pendataan Perangkat BMN Kiriman - Kantor Imigrasi Kelas II TPI Kediri</title>
+<script>
+var t=null;try{t=localStorage.getItem('bmn_tema')}catch(e){}
+if(!t){try{t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}catch(e){t='light'}}
+document.documentElement.dataset.theme=t;
+</script>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f3f5f8;--cd:#fff;--tx:#1a2330;--mu:#586474;--bd:#d6dde6;--pr:#0b4f8a;--pt:#fff;--ac:#e6eef7;--er:#b3261e}
+[data-theme=dark]{--bg:#11161c;--cd:#1a212a;--tx:#e7ecf2;--mu:#9aa6b5;--bd:#2c3744;--pr:#5aa9ee;--pt:#06121f;--ac:#1f2b3a;--er:#ff8a80}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body.lock{overflow:hidden}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--pr);outline-offset:2px}
+.ic{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+header{background:var(--cd);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:5;padding-top:env(safe-area-inset-top)}
+.w{max-width:1100px;margin:0 auto;padding:10px 14px;width:100%}
+.hd{display:flex;align-items:center;gap:10px}
+#logo,#logoIc{width:40px;height:40px;object-fit:contain;color:var(--pr)}
+.hd b{flex:1;font-size:15px;line-height:1.25}
+.ib{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:8px;cursor:pointer}
+.sun{display:none}[data-theme=dark] .sun{display:inline}[data-theme=dark] .moon{display:none}
+main{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:8px;font:inherit;cursor:pointer}
+.pri{background:var(--pr);color:var(--pt);border-color:var(--pr);font-weight:600}
+.sm{min-height:36px;padding:0 10px}
+.btn:disabled{opacity:.6;cursor:wait}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{background:var(--ac);border-radius:99px;padding:2px 10px;font-size:13px}
+.tools{display:flex;gap:8px;margin-bottom:12px}
+input,select{width:100%;min-height:44px;padding:8px 10px;font:inherit;font-size:16px;color:var(--tx);background:var(--cd);border:1px solid var(--bd);border-radius:8px}
+.tools input{flex:2}.tools select{flex:1}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--bd);vertical-align:middle}
+th{font-size:13px;color:var(--mu)}
+.sn{overflow-wrap:anywhere;font-family:ui-monospace,Menlo,Consolas,monospace}
+.th2{display:flex;gap:6px}
+.tb{width:56px;height:56px;padding:0;border:1px solid var(--bd);background:var(--ac);border-radius:6px;cursor:zoom-in;overflow:hidden}
+.thumb{width:100%;height:100%;object-fit:cover;display:block}
+span.thumb{width:56px;height:56px;background:var(--ac);border-radius:6px}
+.er,.err{color:var(--er)}.err{font-size:13px;min-height:0;margin:2px 0 8px}
+.msg{text-align:center;padding:28px 10px;color:var(--mu)}
+.msg .er{margin-top:0}
+footer{padding:14px;text-align:center;color:var(--mu);font-size:13px;border-top:1px solid var(--bd);background:var(--cd);padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;z-index:50}
+.ov.open{display:flex}.ov.ctr{align-items:center}#lb{z-index:60}
+.sheet{background:var(--cd);width:100%;max-width:560px;max-height:92vh;max-height:92dvh;overflow:auto;border-radius:16px 16px 0 0;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
+.ov.ctr .sheet{border-radius:12px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.sh h2{margin:0;font-size:18px}
+label,.lbl{display:block;font-weight:600;margin:10px 0 4px}.req{color:var(--er)}
+.banner{background:var(--ac);border:1px solid var(--er);color:var(--er);padding:8px 10px;border-radius:8px}
+.row,.acts{display:flex;gap:8px;margin-top:8px}.row .btn{flex:1}.acts{justify-content:flex-end;flex-wrap:wrap;margin-top:14px}
+.pv{display:flex;align-items:center;justify-content:center;width:100%;min-height:150px;aspect-ratio:4/3;max-height:240px;border:1px dashed var(--bd);border-radius:8px;background:var(--ac);color:var(--mu);padding:0;overflow:hidden;cursor:pointer;font:inherit}
+.pv img{width:100%;height:100%;object-fit:cover}
+.vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+#vid{width:100%;max-height:60vh;background:#000;border-radius:8px}
+#lbi{max-width:96vw;max-height:90vh;background:#fff;border-radius:6px}
+#lb .ib{position:absolute;top:calc(10px + env(safe-area-inset-top));right:10px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom));background:#1e2a36;color:#fff;padding:10px 16px;border-radius:8px;z-index:70;max-width:92vw;text-align:center}
+.paper{--cd:#fff;--tx:#111;--mu:#444;--bd:#bbb;--ac:#eee;background:#fff;color:#111;border:1px solid var(--bd);border-radius:6px;padding:16px;overflow-x:auto}
+.kop{text-align:center;margin-bottom:12px}.kop h2{margin:4px 0;font-size:18px}
+.rt th{background:#eee;color:#111;text-align:center}
+.rt td,.rt th{border:1px solid #999}
+.rimg{height:64px;width:auto;max-width:100px;object-fit:contain;cursor:zoom-in}
+.ttd{margin:18px 0 0 auto;width:62mm;max-width:100%;text-align:center;break-inside:avoid;page-break-inside:avoid}.ttd .sp{height:64px}
+@media (min-width:700px){.ov{align-items:center}.sheet{border-radius:12px}}
+@media screen and (max-width:700px){
+.rsp thead{display:none}
+.rsp,.rsp tbody,.rsp tr,.rsp td{display:block;width:100%}
+.rsp tr{border:1px solid var(--bd);border-radius:10px;padding:8px 12px;margin-bottom:10px;background:var(--cd)}
+.rsp td{border:0!important;padding:4px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:right;overflow-wrap:anywhere}
+.rsp td[data-l]::before{content:attr(data-l);color:var(--mu);font-size:13px;text-align:left;flex:0 0 36%}
+.rt th{display:none}.rimg{height:90px}.tools{flex-direction:column}
+}
+@page{size:A4 portrait;margin:12mm}
+@media print{
+body{display:block;background:#fff;color:#000;font-size:10pt}
+header,footer,#vList,.noprint,.ov,#toast{display:none!important}
+.w{padding:0;max-width:none}
+.paper{border:0;padding:0;overflow:visible}
+.kop h2{font-size:14pt}
+.rt{font-size:9pt}.rt td,.rt th{border:1px solid #000;padding:3px 4px;text-align:center}
+.rt thead{display:table-header-group}.rt tr{break-inside:avoid;page-break-inside:avoid}
+.rimg{height:20mm;max-width:28mm}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3M4 5v4h4M4 13a8 8 0 0 0 14.9 3M20 19v-4h-4"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+<symbol id="i-flip" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+<symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 16V8l-9-5-9 5v8l9 5z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></symbol>
+</svg>
+
+<header><div class="w hd">
+<img id="logo" src="logo-imigrasi.png" alt="Logo Imigrasi" width="40" height="40">
+<svg id="logoIc" class="ic" hidden role="img" aria-label="Logo"><use href="#i-box"/></svg>
+<b>Kantor Imigrasi Kelas II TPI Kediri</b>
+<button type="button" class="ib" id="btnTema" aria-label="Ganti mode terang/gelap"><svg class="ic moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="ic sun" aria-hidden="true"><use href="#i-sun"/></svg></button>
+</div></header>
+
+<main class="w">
+<div id="vList">
+<h1 style="font-size:20px;margin:4px 0 12px">Pendataan Perangkat BMN Kiriman</h1>
+<div class="bar">
+<button type="button" class="btn pri" id="btnAdd"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg> Tambah Barang</button>
+<button type="button" class="btn" id="btnRef"><svg class="ic" aria-hidden="true"><use href="#i-refresh"/></svg> Perbarui</button>
+<button type="button" class="btn" id="btnRep"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg> Lihat Laporan</button>
+</div>
+<div class="card"><b id="total">0</b> barang terinput<div class="chips" id="chips"></div></div>
+<div class="tools">
+<input id="fq" type="search" placeholder="Cari jenis, tipe, atau serial number" aria-label="Cari barang">
+<select id="fj" aria-label="Filter Jenis Barang"></select>
+</div>
+<div id="state" class="msg" hidden></div>
+<div id="tw" hidden><table class="rsp"><thead><tr><th>Foto</th><th>Jenis Barang</th><th>Tipe</th><th>Serial Number</th><th>Tanggal Input</th><th><span class="vh">Aksi</span></th></tr></thead><tbody id="rows"></tbody></table></div>
+</div>
+
+<section id="vRep" hidden>
+<div class="bar noprint">
+<button type="button" class="btn" id="btnBack"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg> Kembali</button>
+<button type="button" class="btn" id="btnPet"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg> Edit Petugas</button>
+<button type="button" class="btn pri" id="btnPrint"><svg class="ic" aria-hidden="true"><use href="#i-print"/></svg> Cetak Laporan</button>
+</div>
+<div class="paper" id="paper">
+<div class="kop"><div><b>KANTOR IMIGRASI KELAS II TPI KEDIRI</b></div><h2>DAFTAR PERANGKAT BMN KIRIMAN 2026</h2><div>Tanggal cetak: <span id="tglc"></span></div></div>
+<table class="rt rsp"><thead><tr><th>No</th><th>Jenis Barang</th><th>Tipe</th><th>Serial Number</th><th>Tanggal Input</th><th>Foto Barang</th><th>Foto Serial Number</th></tr></thead><tbody id="rb"></tbody></table>
+<div class="ttd"><div>Kediri, <span id="tglt"></span></div><div>Petugas Pemeriksa</div><div class="sp"></div><div><b><u id="rn"></u></b></div><div id="rnip"></div></div>
+</div>
+</section>
+</main>
+
+<footer>Jalan Jawa No. 135, Grogol, Kabupaten Kediri, Jawa Timur<br>&copy; <span id="yr"></span> Kantor Imigrasi Kelas II TPI Kediri</footer>
+
+<datalist id="dj"></datalist><datalist id="dt"></datalist>
+
+<div class="ov" id="form" role="dialog" aria-modal="true" aria-labelledby="fTitle">
+<form class="sheet" id="ff" novalidate>
+<div class="sh"><h2 id="fTitle">Tambah Barang</h2><button type="button" class="ib" data-close="form" aria-label="Tutup form"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+<div id="fErr" class="banner" role="alert" hidden></div>
+<label for="fjn">Jenis Barang <span class="req">*</span></label>
+<input id="fjn" list="dj" maxlength="100" autocomplete="off" required><div class="err" id="e-jenis" role="alert"></div>
+<label for="ftp">Tipe <span class="req">*</span></label>
+<input id="ftp" list="dt" maxlength="100" autocomplete="off" required><div class="err" id="e-tipe" role="alert"></div>
+<label for="fsn">Serial Number <span class="req">*</span></label>
+<input id="fsn" maxlength="100" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" required><div class="err" id="e-serial" role="alert"></div>
+<div id="slots"></div>
+<div class="acts"><button type="button" class="btn" data-close="form">Batal</button><button type="submit" class="btn pri" id="btnSave">Simpan</button></div>
+</form>
+</div>
+
+<div class="ov" id="pet" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+<form class="sheet" id="pf">
+<div class="sh"><h2 id="pTitle">Edit Petugas Pemeriksa</h2><button type="button" class="ib" data-close="pet" aria-label="Tutup"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+<label for="pnm">Nama Petugas</label><input id="pnm" maxlength="100" autocomplete="off">
+<label for="pni">NIP</label><input id="pni" maxlength="30" autocomplete="off" inputmode="numeric">
+<div class="acts"><button type="button" class="btn" data-close="pet">Batal</button><button type="submit" class="btn pri">Simpan</button></div>
+</form>
+</div>
+
+<div class="ov ctr" id="cam" role="dialog" aria-modal="true" aria-label="Kamera">
+<div class="sheet"><video id="vid" playsinline muted autoplay></video>
+<div class="acts" style="justify-content:center"><button type="button" class="btn" id="btnFlip"><svg class="ic" aria-hidden="true"><use href="#i-flip"/></svg> Putar Kamera</button><button type="button" class="btn pri" id="btnShot"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg> Ambil Foto</button><button type="button" class="btn" data-close="cam">Tutup</button></div></div>
+</div>
+
+<div class="ov ctr" id="lb" role="dialog" aria-modal="true" aria-label="Foto layar penuh">
+<button type="button" class="ib" data-close="lb" aria-label="Tutup foto"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+<img id="lbi" alt="Foto layar penuh">
+</div>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+'use strict';
+// URL Web App Apps Script (berakhiran /exec) — isi setelah deploy Code.gs
+const API_URL='https://script.google.com/macros/s/AKfycbzD_E-Bb-wruZEKffb1OKkCezJezNe_e6zFjYhnhu5EaxTjZnamcLzY-yDyYTRsQPrp/exec';
+const MAX_DIM=1600,MAX_B=950*1024,REFRESH_MS=60000;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safe=u=>/^https:\/\//.test(u||'')?u:'';
+const big=u=>String(u).replace(/sz=w\d+/,'sz=w1600');
+const ic=n=>'<svg class="ic" aria-hidden="true"><use href="#i-'+n+'"/></svg>';
+const ls={g(k){try{return localStorage.getItem(k)}catch(e){return null}},s(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const BLN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+const tgl=d=>d.getDate()+' '+BLN[d.getMonth()]+' '+d.getFullYear();
+const fts=s=>{const m=/^(\d{4})-(\d\d)-(\d\d)(?:[ T](\d\d):(\d\d))?/.exec(s||'');return m?m[3]+'/'+m[2]+'/'+m[1]+(m[4]?' '+m[4]+':'+m[5]:''):(s||'-')};
+const S={items:[],q:'',j:'',busy:false,err:'',seq:0,edit:null,sub:false,pet:{nama:'[NAMA PETUGAS]',nip:'[NIP]'}};
+const P={fb:{data:'',orig:''},fs:{data:'',orig:''}};
+let tt,lastF=null,stream=null,facing='environment',camK=null;
+
+function toast(m){const t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>{t.hidden=true},3500)}
+
+// ---------- API ----------
+async function api(method,params,body,ms){
+  if(API_URL.indexOf('GANTI')>-1)throw new Error('API_URL belum diisi. Isi dengan URL Web App (/exec) di bagian atas script.');
+  const c=new AbortController(),t=setTimeout(()=>c.abort(),ms||30000);
+  try{
+    const o={signal:c.signal};let u=API_URL;
+    if(method==='POST'){o.method='POST';o.headers={'Content-Type':'text/plain;charset=utf-8'};o.body=JSON.stringify(body)}
+    else u+='?'+new URLSearchParams(params);
+    const r=await fetch(u,o);let j;
+    try{j=await r.json()}catch(e){throw new Error('Respons server tidak valid. Periksa deploy Web App (Access: Anyone).')}
+    if(!j.ok)throw new Error(j.error||'Terjadi galat pada server.');
+    return j.data;
+  }catch(e){
+    if(e.name==='AbortError')throw new Error('Koneksi terlalu lama (timeout). Coba lagi.');
+    if(e instanceof TypeError)throw new Error('Tidak dapat terhubung ke server. Periksa koneksi internet.');
+    throw e;
+  }finally{clearTimeout(t)}
+}
+async function load(silent){
+  const id=++S.seq;S.busy=true;if(!silent)renderList();
+  try{
+    const d=await api('GET',{action:'list'});if(id!==S.seq)return;
+    S.items=(d.items||[]).map(i=>({row:i.row,ts:i.ts||'',jenis:i.jenis||'',tipe:i.tipe||'',serial:i.serial||'',fb:safe(i.fb),fs:safe(i.fs)})).sort((a,b)=>b.row-a.row);
+    S.err='';
+  }catch(e){
+    if(id!==S.seq)return;
+    if(!silent){if(S.items.length)toast(e.message);S.err=e.message}
+  }
+  S.busy=false;renderAll();
+}
+
+// ---------- Render ----------
+function renderAll(){renderSum();renderList();renderRep()}
+function renderSum(){
+  const m=new Map();S.items.forEach(i=>{const k=i.jenis.toLowerCase(),e=m.get(k)||{n:i.jenis,c:0};e.c++;m.set(k,e)});
+  const a=[...m.values()].sort((x,y)=>x.n.localeCompare(y.n));
+  $('total').textContent=S.items.length;
+  $('chips').innerHTML=a.map(e=>'<span class="chip">'+esc(e.n)+' <b>'+e.c+'</b></span>').join('');
+  const f=$('fj');f.innerHTML='<option value="">Semua Jenis</option>'+a.map(e=>'<option>'+esc(e.n)+'</option>').join('');
+  f.value=S.j;if(f.value!==S.j)S.j='';
+  $('dj').innerHTML=a.map(e=>'<option value="'+esc(e.n)+'">').join('');
+}
+const thumb=(u,l,s)=>u?'<button type="button" class="tb" data-img="'+esc(big(u))+'" aria-label="Lihat '+l+' '+esc(s)+' layar penuh"><img class="thumb" src="'+esc(u)+'" alt="'+l+'" loading="lazy" referrerpolicy="no-referrer"></button>':'<span class="thumb"></span>';
+function renderList(){
+  const q=S.q.trim().toLowerCase(),jl=S.j.toLowerCase();
+  const r=S.items.filter(i=>(!jl||i.jenis.toLowerCase()===jl)&&(!q||(i.jenis+' '+i.tipe+' '+i.serial).toLowerCase().includes(q)));
+  let m='';
+  if(S.busy&&!S.items.length)m='<p role="status">Memuat data…</p>';
+  else if(S.err&&!S.items.length)m='<p class="er" role="alert">'+esc(S.err)+'</p><button type="button" class="btn pri" data-act="retry">'+ic('refresh')+' Coba Lagi</button>';
+  else if(!S.items.length)m='<p>Belum ada barang terinput</p>';
+  else if(!r.length)m='<p>Tidak ada barang yang cocok.</p>';
+  $('state').innerHTML=m;$('state').hidden=!m;$('tw').hidden=!!m;
+  $('rows').innerHTML=m?'':r.map(i=>'<tr><td data-l="Foto"><span class="th2">'+thumb(i.fb,'Foto barang',i.serial)+thumb(i.fs,'Foto serial number',i.serial)+'</span></td><td data-l="Jenis Barang">'+esc(i.jenis)+'</td><td data-l="Tipe">'+esc(i.tipe)+'</td><td data-l="Serial Number" class="sn">'+esc(i.serial)+'</td><td data-l="Tanggal Input">'+esc(fts(i.ts))+'</td><td><button type="button" class="btn sm" data-edit="'+i.row+'" aria-label="Edit '+esc(i.serial)+'">'+ic('edit')+' Edit</button></td></tr>').join('');
+}
+const rimg=(u,l)=>u?'<img class="rimg" src="'+esc(u)+'" alt="'+l+'" data-img="'+esc(big(u))+'" referrerpolicy="no-referrer">':'-';
+function renderRep(){
+  const a=[...S.items].sort((x,y)=>x.row-y.row);
+  $('rb').innerHTML=a.map((i,n)=>'<tr><td data-l="No">'+(n+1)+'</td><td data-l="Jenis Barang">'+esc(i.jenis)+'</td><td data-l="Tipe">'+esc(i.tipe)+'</td><td data-l="Serial Number" class="sn">'+esc(i.serial)+'</td><td data-l="Tanggal Input">'+esc(fts(i.ts))+'</td><td data-l="Foto Barang">'+rimg(i.fb,'Foto barang')+'</td><td data-l="Foto Serial Number">'+rimg(i.fs,'Foto serial number')+'</td></tr>').join('')||'<tr><td colspan="7">Belum ada barang terinput</td></tr>';
+  const d=tgl(new Date());$('tglc').textContent=d;$('tglt').textContent=d;
+  $('rn').textContent=S.pet.nama;$('rnip').textContent='NIP. '+S.pet.nip;
+}
+function showView(v){$('vList').hidden=v==='rep';$('vRep').hidden=v!=='rep';scrollTo(0,0)}
+async function printRep(){
+  const im=[...document.querySelectorAll('#paper img')].filter(i=>!i.complete);
+  if(im.length)await Promise.race([Promise.all(im.map(i=>new Promise(r=>{i.onload=i.onerror=r}))),new Promise(r=>setTimeout(r,5000))]);
+  window.print();
+}
+
+// ---------- Modal ----------
+function openM(id){lastF=document.activeElement;$(id).classList.add('open');document.body.classList.add('lock')}
+function closeM(id){$(id).classList.remove('open');if(!document.querySelector('.ov.open'))document.body.classList.remove('lock');if(lastF&&lastF.focus)try{lastF.focus()}catch(e){}}
+function clearErr(){document.querySelectorAll('.err').forEach(e=>{e.textContent=''});$('fErr').hidden=true}
+function fillTipe(){
+  const j=$('fjn').value.trim().toLowerCase(),s=new Set();
+  S.items.forEach(i=>{if(!j||i.jenis.toLowerCase()===j)s.add(i.tipe)});
+  $('dt').innerHTML=[...s].sort().map(t=>'<option value="'+esc(t)+'">').join('');
+}
+function setPv(k){
+  const p=P[k],src=p.data||p.orig,el=$('pv-'+k);el.textContent='';
+  if(src){const im=new Image();im.alt='Pratinjau foto';im.referrerPolicy='no-referrer';im.src=src;el.append(im)}
+  else el.textContent='Belum ada foto';
+}
+function openForm(it){
+  S.edit=it||null;$('ff').reset();
+  $('fTitle').textContent=it?'Edit Barang':'Tambah Barang';
+  $('fjn').value=it?it.jenis:'';$('ftp').value=it?it.tipe:'';$('fsn').value=it?it.serial:'';
+  ['fb','fs'].forEach(k=>{P[k]={data:'',orig:it?it[k]:''};setPv(k)});
+  clearErr();fillTipe();$('btnSave').disabled=false;$('btnSave').textContent='Simpan';
+  openM('form');$('ff').parentNode.scrollTop=0;
+  if(!matchMedia('(pointer:coarse)').matches)$('fjn').focus();
+}
+async function submit(e){
+  e.preventDefault();if(S.sub)return;clearErr();
+  const jenis=$('fjn').value.trim(),tipe=$('ftp').value.trim(),serial=$('fsn').value.trim().toUpperCase();
+  $('fsn').value=serial;let ok=true;const bad=(k,m)=>{$('e-'+k).textContent=m;ok=false};
+  if(!jenis)bad('jenis','Jenis Barang wajib diisi.');else if(jenis.length>100)bad('jenis','Jenis Barang maksimal 100 karakter.');
+  if(!tipe)bad('tipe','Tipe wajib diisi.');else if(tipe.length>100)bad('tipe','Tipe maksimal 100 karakter.');
+  if(!serial)bad('serial','Serial Number wajib diisi.');
+  else if(serial.length>100)bad('serial','Serial Number maksimal 100 karakter.');
+  else{const d=S.items.find(i=>i.serial.toUpperCase()===serial&&(!S.edit||i.row!==S.edit.row));
+    if(d)bad('serial','Serial Number sudah terdaftar (Jenis: '+d.jenis+', Tipe: '+d.tipe+').')}
+  if(!P.fb.data&&!P.fb.orig)bad('fb','Foto Barang wajib diisi.');
+  if(!P.fs.data&&!P.fs.orig)bad('fs','Foto Stiker/Serial Number wajib diisi.');
+  if(!ok){const f=document.querySelector('.err:not(:empty)');if(f)f.scrollIntoView({block:'center'});return}
+  const ed=!!S.edit,b=ed?{action:'update',row:S.edit.row,serialLama:S.edit.serial}:{action:'save'};
+  Object.assign(b,{jenis,tipe,serial});
+  if(P.fb.data)b.fotoBarang=P.fb.data;if(P.fs.data)b.fotoSerial=P.fs.data;
+  S.sub=true;const sv=$('btnSave');sv.disabled=true;sv.textContent='Menyimpan…';
+  try{
+    await api('POST',null,b,120000);
+    closeM('form');toast(ed?'Perubahan berhasil disimpan.':'Barang berhasil disimpan.');load();
+  }catch(x){const f=$('fErr');f.textContent=x.message;f.hidden=false;$('ff').parentNode.scrollTop=0}
+  S.sub=false;sv.disabled=false;sv.textContent='Simpan';
+}
+
+// ---------- Foto ----------
+const slot=(k,t)=>'<div class="slot"><div class="lbl">'+t+' <span class="req">*</span></div><button type="button" class="pv" id="pv-'+k+'" data-pv="'+k+'" aria-label="Pratinjau '+t+' layar penuh">Belum ada foto</button><div class="row"><button type="button" class="btn" data-cam="'+k+'">'+ic('camera')+' Kamera</button><button type="button" class="btn" data-gal="'+k+'">'+ic('image')+' Galeri</button></div><input type="file" accept="image/*" class="vh" id="g-'+k+'" tabindex="-1" aria-hidden="true"><input type="file" accept="image/*" capture="environment" class="vh" id="c-'+k+'" tabindex="-1" aria-hidden="true"><div class="err" id="e-'+k+'" role="alert"></div></div>';
+function enc(src,w,h){
+  let s=Math.min(1,MAX_DIM/Math.max(w,h)),d='';
+  for(let n=0;n<8;n++){
+    const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w*s));c.height=Math.max(1,Math.round(h*s));
+    const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(src,0,0,c.width,c.height);
+    for(let q=0.85;q>=0.4;q-=0.1){d=c.toDataURL('image/jpeg',q);if((d.length-23)*0.75<MAX_B)return d}
+    s*=0.8;
+  }
+  return d;
+}
+function loadImg(f){return new Promise((ok,no)=>{const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{URL.revokeObjectURL(u);ok(im)};im.onerror=()=>{URL.revokeObjectURL(u);no(new Error('img'))};im.src=u})}
+async function pick(k,f){
+  if(!f)return;$('e-'+k).textContent='';
+  try{const im=await loadImg(f);P[k].data=enc(im,im.naturalWidth,im.naturalHeight);setPv(k)}
+  catch(e){$('e-'+k).textContent='Foto tidak dapat dibaca. Coba foto lain.'}
+}
+function stopCam(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$('vid').srcObject=null}
+async function startCam(){
+  stopCam();
+  stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing},width:{ideal:1920},height:{ideal:1080}},audio:false});
+  const v=$('vid');v.srcObject=stream;await v.play();
+}
+function closeCam(){stopCam();closeM('cam')}
+async function openCam(k){
+  camK=k;
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){$('c-'+k).click();return}
+  openM('cam');
+  try{await startCam()}catch(e){closeCam();toast('Kamera langsung tidak bisa dibuka, memakai kamera bawaan perangkat.');$('c-'+k).click()}
+}
+async function flipCam(){
+  facing=facing==='environment'?'user':'environment';
+  try{await startCam()}catch(e){facing=facing==='environment'?'user':'environment';toast('Tidak dapat memutar kamera.');try{await startCam()}catch(x){}}
+}
+function shoot(){
+  const v=$('vid');if(!v.videoWidth)return;
+  const d=enc(v,v.videoWidth,v.videoHeight),k=camK;closeCam();P[k].data=d;$('e-'+k).textContent='';setPv(k);
+}
+
+// ---------- Event ----------
+document.addEventListener('error',e=>{const t=e.target;if(t.id==='logo'){t.hidden=true;$('logoIc').hidden=false}else if(t.tagName==='IMG')t.style.visibility='hidden'},true);
+document.addEventListener('click',e=>{
+  const t=e.target;
+  if(t.classList&&t.classList.contains('ov')){t.id==='cam'?closeCam():closeM(t.id);return}
+  const a=t.closest('[data-img],[data-edit],[data-cam],[data-gal],[data-pv],[data-close],[data-act]');if(!a)return;
+  const d=a.dataset;
+  if(d.img){$('lbi').src=d.img;openM('lb')}
+  else if(d.edit){const it=S.items.find(i=>String(i.row)===d.edit);if(it)openForm(it)}
+  else if(d.cam)openCam(d.cam);
+  else if(d.gal)$('g-'+d.gal).click();
+  else if(d.pv){const p=P[d.pv],s=p.data||(p.orig?big(p.orig):'');if(s){$('lbi').src=s;openM('lb')}}
+  else if(d.close)d.close==='cam'?closeCam():closeM(d.close);
+  else if(d.act==='retry')load();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  if($('lb').classList.contains('open'))closeM('lb');
+  else if($('cam').classList.contains('open'))closeCam();
+  else if($('pet').classList.contains('open'))closeM('pet');
+  else if($('form').classList.contains('open'))closeM('form');
+});
+function init(){
+  $('yr').textContent=new Date().getFullYear();
+  const lg=$('logo');if(lg.complete&&!lg.naturalWidth){lg.hidden=true;$('logoIc').hidden=false}
+  try{const p=JSON.parse(ls.g('bmn_petugas')||'null');if(p&&p.nama)S.pet={nama:p.nama,nip:p.nip||'[NIP]'}}catch(e){}
+  $('slots').innerHTML=slot('fb','Foto Barang')+slot('fs','Foto Stiker/Serial Number');
+  ['fb','fs'].forEach(k=>['g-','c-'].forEach(p=>$(p+k).addEventListener('change',e=>{const f=e.target.files[0];e.target.value='';pick(k,f)})));
+  $('btnTema').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;ls.s('bmn_tema',t)};
+  $('btnAdd').onclick=()=>openForm(null);
+  $('btnRef').onclick=()=>load();
+  $('btnRep').onclick=()=>showView('rep');
+  $('btnBack').onclick=()=>showView('list');
+  $('btnPrint').onclick=printRep;
+  $('btnPet').onclick=()=>{$('pnm').value=S.pet.nama;$('pni').value=S.pet.nip;openM('pet')};
+  $('pf').onsubmit=e=>{
+    e.preventDefault();
+    S.pet={nama:$('pnm').value.trim()||'[NAMA PETUGAS]',nip:$('pni').value.trim()||'[NIP]'};
+    ls.s('bmn_petugas',JSON.stringify(S.pet));renderRep();closeM('pet');
+  };
+  $('ff').addEventListener('submit',submit);
+  $('fq').addEventListener('input',e=>{S.q=e.target.value;renderList()});
+  $('fj').addEventListener('change',e=>{S.j=e.target.value;renderList()});
+  $('fjn').addEventListener('input',fillTipe);
+  $('fsn').addEventListener('input',e=>{const el=e.target,p=el.selectionStart;el.value=el.value.toUpperCase();try{el.setSelectionRange(p,p)}catch(x){}});
+  $('fsn').addEventListener('blur',e=>{e.target.value=e.target.value.trim()});
+  $('btnFlip').onclick=flipCam;$('btnShot').onclick=shoot;
+  renderRep();load();
+  setInterval(()=>{if(!document.hidden&&!document.querySelector('.ov.open'))load(true)},REFRESH_MS);
+}
+init();
+</script>
+</body>
+</html>
